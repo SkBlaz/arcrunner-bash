@@ -10,4 +10,4 @@ XRSL_RESULTS=$XRSL_FOLDER"_RESULTS";
 mkdir XRSL_META XRSL_RESULTS;
 cd XRSL_FOLDER; arcsub -c $CLUSTER -o "../"XRSL_META;
 cd ../XRSL_RESULTS;
-while sleep $TIMEOUT; do arcstat -i "../"XRSL_META & arcget -i "../"XRSL_META; done
+while sleep $TIMEOUT; do [ $(arcstat -i "../"XRSL_META)|grep 'no jobs' | wc -l > 0 ] && break; arcget -i "../"XRSL_META; done
