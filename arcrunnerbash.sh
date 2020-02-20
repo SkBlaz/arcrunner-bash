@@ -5,9 +5,11 @@
 ## 2.) while loop that: a) goes to folder_outputs, arcget -i ../folder_meta/jids.txt
 
 XRSL_FOLDER=$1;CLUSTER=$2;TIMEOUT=$3
+mkdir $XRSL_FOLDER"_META";
 XRSL_META=$XRSL_FOLDER"_META/current.xml";
 XRSL_RESULTS=$XRSL_FOLDER"_RESULTS";
-mkdir XRSL_META XRSL_RESULTS;
-cd XRSL_FOLDER; arcsub -c $CLUSTER -o "../"XRSL_META;
-cd ../XRSL_RESULTS;
-while sleep $TIMEOUT; do [ $(arcstat -i "../"XRSL_META)|grep 'no jobs' | wc -l > 0 ] && break; arcget -i "../"XRSL_META; done
+mkdir $XRSL_META $XRSL_RESULTS;
+cd $XRSL_FOLDER;
+arcsub -c $CLUSTER -o "../"$XRSL_META;
+cd ../$XRSL_RESULTS;
+while sleep $TIMEOUT; do [ $(arcstat -i "../"XRSL_META|grep 'no jobs' | wc -l) > 0 ] && break; arcget -i "../"XRSL_META; done
