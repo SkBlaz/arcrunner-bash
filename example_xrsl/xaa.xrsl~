@@ -1,0 +1,17 @@
+&
+(count = 4)
+(jobname = "hellompi")
+(inputfiles =
+("hellompi.sh" "")
+("hellompi.c" "")
+)
+(outputfiles =
+("hellompi.out" "")
+)
+(executable="hellompi.sh")
+(stdout=hellompi.stdout)
+(stderr=hellompi.stderr)
+(walltime="15 minutes")
+(gmlog=log)
+(memory=2000)
+(runtimeenvironment="APPS/BASE/OPENMPI-3.1.2")

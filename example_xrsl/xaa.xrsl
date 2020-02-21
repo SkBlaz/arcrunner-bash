@@ -1,0 +1,12 @@
+&
+(count = 1)
+(jobname = "hellompi")
+(executable= "hello.sh")
+(inputFiles =
+	    ("hello.sh" "../hello.sh")
+)	
+(stdout=hellompi.stdout)
+(stderr=hellompi.stderr)
+(walltime="15 minutes")
+(gmlog=log)
+(memory=2000)
